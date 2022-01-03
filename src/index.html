@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>Hello World!</title>
+		<link rel="stylesheet" href="./client/css/fonts.css" />
 		<link rel="stylesheet" href="./client/css/index.css" />
 		<link
 			rel="stylesheet"
@@ -10,16 +11,47 @@
 		/>
 	</head>
 	<body>
-		<header>
+		<header style="-webkit-app-region: drag">
 			<div class="header-c">
-				<div class="header-log"></div>
+				<i class="fas fa-truck"></i>
 
-				<div class="app-name"></div>
-
-				<div class="header-space"></div>
-
-				<div class="header-min"></div>
+				<p class="app-name">
+					<span class="r"> Правила </span>
+					<span class="y"> Дорожнього </span>
+					<span class="g"> Руху </span>
+					2022
+				</p>
 			</div>
 		</header>
+
+		<main>
+			<div class="logout-c" id="btn-logout">
+				<i class="fas fa-door-open"></i>
+			</div>
+
+			<div class="image-c"></div>
+
+			<div class="btn-c">
+				<div class="btn-i">
+					<i class="fas fa-hourglass-start"></i>
+					<p>Розпочати тестування</p>
+				</div>
+
+				<div class="btn-i">
+					<i class="fas fa-clipboard-list"></i>
+					<p>Пройти екзамен</p>
+				</div>
+
+				<div class="btn-i">
+					<i class="fas fa-laptop-code"></i>
+					<p>Про програму</p>
+				</div>
+
+				<div class="btn-i">
+					<i class="fas fa-cogs"></i>
+					<p>Налаштування</p>
+				</div>
+			</div>
+		</main>
 	</body>
 </html>

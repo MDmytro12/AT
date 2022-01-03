@@ -1,0 +1,129 @@
+@import url('./variables.css');
+
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	height: 100vh;
+	font-family: Roboto;
+}
+
+p {
+	padding: 0;
+	margin: 0;
+}
+
+header {
+	height: 10%;
+	width: 100%;
+}
+
+main {
+	height: 90%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* header */
+
+.header-c {
+	cursor: pointer;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	padding-left: 30px;
+	font-size: 38px;
+	font-weight: 800;
+	background-color: var(--main);
+	color: white;
+	z-index: 3;
+}
+
+.header-c > i {
+	margin-right: 15px;
+}
+
+.r {
+	color: rgba(240, 51, 51, 0.9);
+}
+
+.y {
+	color: rgba(226, 255, 95, 0.9);
+}
+
+.g {
+	color: rgba(55, 247, 55, 0.9);
+}
+
+/* Logout */
+
+.logout-c {
+	position: absolute;
+	font-size: 50px;
+	bottom: 2%;
+	right: 2%;
+
+	width: 120px;
+	height: 120px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--main);
+	transition: all linear 0.5s;
+	border-radius: 100px;
+	cursor: pointer;
+}
+
+.logout-c:hover {
+	background-color: var(--main);
+	color: white;
+	font-size: 60px;
+}
+
+/* Main */
+
+.btn-c {
+	height: 100%;
+	width: 70%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.btn-i {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--main);
+	color: white;
+	font-size: 35px;
+	padding-top: 20px;
+	padding-bottom: 30px;
+	border-radius: 100px;
+	margin-bottom: 20px;
+	cursor: pointer;
+	transition: all linear 0.6s;
+}
+
+i {
+	transition: all linear 0.6s;
+}
+
+.btn-i > i {
+	margin-right: 25px;
+}
+
+.btn-i:hover {
+	background-color: var(--hover);
+	color: var(--main);
+}
+
+.btn-i:hover > i {
+	transform: rotate(360deg);
+	color: rgba(55, 247, 55, 0.9);
+}

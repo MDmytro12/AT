@@ -1,0 +1,1 @@
+const { ipcRerenderer } = require('electron');
