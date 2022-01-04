@@ -2509,7 +2509,7 @@
     "@types/whatwg-url" "^8.2.1"
     "whatwg-url" "^11.0.0"
 
-"mongodb@4.2.2":
+"mongodb@^4.2.2", "mongodb@4.2.2":
   "integrity" "sha512-zt8rCTnTKyMQppyt63qMnrLM5dbADgUk18ORPF1XbtHLIYCyc9hattaYHi0pqMvNxDpgGgUofSVzS+UQErgTug=="
   "resolved" "https://registry.npmjs.org/mongodb/-/mongodb-4.2.2.tgz"
   "version" "4.2.2"

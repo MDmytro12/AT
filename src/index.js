@@ -1,5 +1,6 @@
-const { app, BrowserWindow, screen } = require('electron');
+const { app, BrowserWindow, screen, ipcMain } = require('electron');
 const path = require('path');
+const DBController = require('./backend/DBControllers');
 
 require('electron-reload')(__dirname);
 
@@ -15,7 +16,7 @@ const createWindow = () => {
 	const screenWidth = screen.getPrimaryDisplay().bounds.width;
 	const screenHeight = screen.getPrimaryDisplay().bounds.height;
 
-	let TestScreen;
+	let ChooseModuleScreen, SettingScreen, EsamScreen, AboutProgramScreen;
 
 	const mainWindow = new BrowserWindow({
 		width: parseInt(screenWidth / 2),
@@ -28,13 +29,49 @@ const createWindow = () => {
 			nodeIntegration: true,
 			contextIsolation: false,
 		},
-		frame: false,
+		// frame: false,
 	});
+
 	mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
-	// and load the index.html of the app.
+	// Menu screen
 
-	// Open the DevTools.
+	ipcMain.on('app-logout', () => {
+		if (mainWindow) {
+			mainWindow.close();
+		}
+	});
+
+	ipcMain.on('open-module', () => {
+		if (!ChooseModuleScreen) {
+			ChooseModuleScreen = new BrowserWindow({
+				width: parseInt(screenWidth / 2),
+				height: parseInt(screenHeight * 0.8),
+				minHeight: parseInt(screenHeight * 0.8),
+				maxHeight: parseInt(screenHeight * 0.8),
+				minWidth: parseInt(screenWidth / 2),
+				maxWidth: parseInt(screenWidth / 2),
+				webPreferences: {
+					nodeIntegration: true,
+					contextIsolation: false,
+				},
+			});
+			ChooseModuleScreen.loadFile(
+				path.resolve(__dirname, 'client', 'html', 'module.html'),
+			);
+			mainWindow.hide();
+		}
+	});
+
+	// Module screen
+
+	ipcMain.on('module-back', () => {
+		if (ChooseModuleScreen) {
+			ChooseModuleScreen.close();
+			ChooseModuleScreen = null;
+			mainWindow.show();
+		}
+	});
 };
 
 // This method will be called when Electron has finished
