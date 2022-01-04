@@ -49,7 +49,7 @@
 }
 
 .choose-i {
-	font-size: 35px;
+	font-size: 30px;
 	font-weight: 400;
 	padding-top: 20px;
 	padding-bottom: 20px;
@@ -79,7 +79,7 @@
 
 .choose-i:hover {
 	background-color: var(--main);
-	border-color: var(--main);
+	border: none;
 	color: white;
 }
 

@@ -16,7 +16,11 @@ const createWindow = () => {
 	const screenWidth = screen.getPrimaryDisplay().bounds.width;
 	const screenHeight = screen.getPrimaryDisplay().bounds.height;
 
-	let ChooseModuleScreen, SettingScreen, EsamScreen, AboutProgramScreen;
+	let ChooseModuleScreen,
+		SettingScreen,
+		EsamScreen,
+		AboutProgramScreen,
+		TestScreen;
 
 	const mainWindow = new BrowserWindow({
 		width: parseInt(screenWidth / 2),
@@ -42,6 +46,8 @@ const createWindow = () => {
 		}
 	});
 
+	// Module screen
+
 	ipcMain.on('open-module', () => {
 		if (!ChooseModuleScreen) {
 			ChooseModuleScreen = new BrowserWindow({
@@ -63,13 +69,40 @@ const createWindow = () => {
 		}
 	});
 
-	// Module screen
-
 	ipcMain.on('module-back', () => {
 		if (ChooseModuleScreen) {
 			ChooseModuleScreen.close();
 			ChooseModuleScreen = null;
 			mainWindow.show();
+		}
+	});
+
+	ipcMain.on('app-exit', () => {
+		app.quit();
+	});
+
+	// Test
+
+	ipcMain.on('open-test', () => {
+		if (ChooseModuleScreen) {
+			ChooseModuleScreen.close();
+			ChooseModuleScreen = null;
+
+			TestScreen = new BrowserWindow({
+				width: parseInt(screenWidth * 0.95),
+				height: parseInt(screenHeight * 0.85),
+				minHeight: parseInt(screenHeight * 0.85),
+				minWidth: parseInt(screenWidth * 0.95),
+				webPreferences: {
+					nodeIntegration: true,
+					contextIsolation: false,
+				},
+				// frame: false,
+			});
+
+			TestScreen.loadFile(
+				path.resolve(__dirname, 'client', 'html', 'test.html'),
+			);
 		}
 	});
 };
