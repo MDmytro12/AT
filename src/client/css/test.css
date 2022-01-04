@@ -25,6 +25,10 @@
 	left: 3%;
 }
 
+.logout-c.--back:hover {
+	transform: rotate(360deg);
+}
+
 /* Question  */
 
 .q-c {

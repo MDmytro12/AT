@@ -105,6 +105,31 @@ const createWindow = () => {
 			);
 		}
 	});
+
+	ipcMain.on('back-test', () => {
+		if (TestScreen) {
+			TestScreen.close();
+			TestScreen = null;
+
+			if (!ChooseModuleScreen) {
+				ChooseModuleScreen = new BrowserWindow({
+					width: parseInt(screenWidth / 2),
+					height: parseInt(screenHeight * 0.8),
+					minHeight: parseInt(screenHeight * 0.8),
+					maxHeight: parseInt(screenHeight * 0.8),
+					minWidth: parseInt(screenWidth / 2),
+					maxWidth: parseInt(screenWidth / 2),
+					webPreferences: {
+						nodeIntegration: true,
+						contextIsolation: false,
+					},
+				});
+				ChooseModuleScreen.loadFile(
+					path.resolve(__dirname, 'client', 'html', 'module.html'),
+				);
+			}
+		}
+	});
 };
 
 // This method will be called when Electron has finished
