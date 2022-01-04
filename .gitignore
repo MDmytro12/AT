@@ -35,7 +35,7 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
-src/client/assets/img
+src/client/assets/img/
 
 # TypeScript v1 declaration files
 typings/
