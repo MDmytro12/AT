@@ -33,6 +33,7 @@ const createWindow = () => {
 			nodeIntegration: true,
 			contextIsolation: false,
 		},
+		icon: path.resolve(__dirname, 'build', 'svitlofor.ico'),
 		// frame: false,
 	});
 
@@ -129,6 +130,24 @@ const createWindow = () => {
 				);
 			}
 		}
+	});
+
+	// Mongo
+
+	ipcMain.on('get-all-cs', async () => {
+		await DBController.getAllCategories(ChooseModuleScreen);
+	});
+
+	ipcMain.on('s-current-c', async (e, data) => {
+		await DBController.setCurrentCategory(data);
+	});
+
+	ipcMain.on('g-all-q-by-c-id', () => {
+		DBController.getAllQuestionsByNumber(TestScreen);
+	});
+
+	ipcMain.on('g-current-c', async () => {
+		await DBController.getCurrentCategory(TestScreen);
 	});
 };
 
