@@ -1,0 +1,119 @@
+@import url('./variables.css');
+
+.r-c {
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.r-t {
+	width: 100%;
+	font-size: 50px;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	padding-top: 70px;
+	letter-spacing: 1px;
+}
+
+.r-t > i {
+	margin-right: 20px;
+	color: rgba(0, 0, 0, 0.3);
+}
+
+.i-c {
+	font-size: 70px;
+	color: var(--red);
+	margin: 0 auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.i-c > i {
+}
+
+.r-r {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	font-size: 45px;
+	font-weight: 400;
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.r-r > p > span {
+	font-size: 50px;
+	font-weight: 800;
+	font-style: italic;
+}
+
+.r-r > p > .part {
+	color: var(--red);
+}
+
+.r-r > p > .all {
+	color: black;
+}
+
+.r-a {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	font-size: 45px;
+	margin-top: 50px;
+}
+
+.r-a > i {
+	margin-right: 20px;
+	color: rgba(0, 0, 0, 0.3);
+}
+
+.r-a > span {
+	color: var(--red);
+	font-weight: 800;
+	font-size: 100px;
+	margin-left: 30px;
+	border: 5px solid var(--red);
+	padding-right: 30px;
+	padding-left: 30px;
+	border-radius: 100px;
+	position: relative;
+	transform: translateY(0);
+	transition: transform 1s;
+	cursor: pointer;
+}
+
+.r-a > span::after {
+	content: '';
+	display: block;
+	position: absolute;
+	bottom: -30px;
+	left: 50%;
+	height: 8px;
+	width: 100%;
+	box-shadow: 0px 0px 15px 0px rgba(233, 7, 7, 0.4);
+	border-radius: 50%;
+	background-color: rgba(233, 7, 7, 0.4);
+	transform: translate(-50%, 0);
+	transition: transform 1s;
+}
+
+.r-a > span:hover {
+	transform: translateY(-40px);
+	transition: transform 1s;
+}
+
+.r-a > span:hover::after {
+	transform: translate(-50%, 40px) scale(0.75);
+	transition: transform 1s;
+}

@@ -18,7 +18,7 @@ const createWindow = () => {
 
 	let ChooseModuleScreen,
 		SettingScreen,
-		EsamScreen,
+		ResultScreen,
 		AboutProgramScreen,
 		TestScreen;
 
@@ -33,8 +33,7 @@ const createWindow = () => {
 			nodeIntegration: true,
 			contextIsolation: false,
 		},
-		icon: path.resolve(__dirname, 'build', 'svitlofor.ico'),
-		// frame: false,
+		frame: false,
 	});
 
 	mainWindow.loadFile(path.join(__dirname, 'index.html'));
@@ -52,12 +51,12 @@ const createWindow = () => {
 	ipcMain.on('open-module', () => {
 		if (!ChooseModuleScreen) {
 			ChooseModuleScreen = new BrowserWindow({
-				width: parseInt(screenWidth / 2),
+				width: parseInt(screenWidth * 0.7),
 				height: parseInt(screenHeight * 0.8),
 				minHeight: parseInt(screenHeight * 0.8),
 				maxHeight: parseInt(screenHeight * 0.8),
-				minWidth: parseInt(screenWidth / 2),
-				maxWidth: parseInt(screenWidth / 2),
+				minWidth: parseInt(screenWidth * 0.7),
+				maxWidth: parseInt(screenWidth * 0.7),
 				webPreferences: {
 					nodeIntegration: true,
 					contextIsolation: false,
@@ -74,8 +73,12 @@ const createWindow = () => {
 		if (ChooseModuleScreen) {
 			ChooseModuleScreen.close();
 			ChooseModuleScreen = null;
-			mainWindow.show();
 		}
+		if (ResultScreen) {
+			ResultScreen.close();
+			ResultScreen = null;
+		}
+		mainWindow.show();
 	});
 
 	ipcMain.on('app-exit', () => {
@@ -114,12 +117,12 @@ const createWindow = () => {
 
 			if (!ChooseModuleScreen) {
 				ChooseModuleScreen = new BrowserWindow({
-					width: parseInt(screenWidth / 2),
+					width: parseInt(screenWidth * 0.7),
 					height: parseInt(screenHeight * 0.8),
 					minHeight: parseInt(screenHeight * 0.8),
 					maxHeight: parseInt(screenHeight * 0.8),
-					minWidth: parseInt(screenWidth / 2),
-					maxWidth: parseInt(screenWidth / 2),
+					minWidth: parseInt(screenWidth * 0.7),
+					maxWidth: parseInt(screenWidth * 0.7),
 					webPreferences: {
 						nodeIntegration: true,
 						contextIsolation: false,
@@ -129,6 +132,34 @@ const createWindow = () => {
 					path.resolve(__dirname, 'client', 'html', 'module.html'),
 				);
 			}
+		}
+	});
+
+	// Result sreen
+
+	ipcMain.on('open-result', () => {
+		if (TestScreen) {
+			TestScreen.close();
+			TestScreen = null;
+		}
+
+		if (!ResultScreen) {
+			ResultScreen = new BrowserWindow({
+				width: parseInt(screenWidth * 0.5),
+				height: parseInt(screenHeight * 0.6),
+				minHeight: parseInt(screenHeight * 0.6),
+				maxHeight: parseInt(screenHeight * 0.6),
+				minWidth: parseInt(screenWidth * 0.5),
+				maxWidth: parseInt(screenWidth * 0.5),
+				webPreferences: {
+					nodeIntegration: true,
+					contextIsolation: false,
+				},
+			});
+
+			ResultScreen.loadFile(
+				path.resolve(__dirname, 'client', 'html', 'result.html'),
+			);
 		}
 	});
 

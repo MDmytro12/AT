@@ -46,12 +46,20 @@
 	align-items: center;
 	justify-content: flex-start;
 
-	font-size: 40px;
+	font-size: 35px;
 	font-weight: 500;
 
 	padding-top: 30px;
 	padding-bottom: 30px;
 	height: 10%;
+	overflow-y: auto;
+	cursor: pointer;
+	margin-top: 10px;
+	letter-spacing: 1px;
+}
+
+.q-t::-webkit-scrollbar {
+	display: none;
 }
 
 .q-t > i {
@@ -62,6 +70,8 @@
 
 .q-t > p {
 	text-align: left;
+	margin-top: 80px;
+	padding-bottom: 60px;
 }
 
 /* Question body */
@@ -414,4 +424,69 @@
 
 .img-view.active {
 	display: flex;
+}
+
+/* Active */
+
+.q-b.active {
+	display: flex !important;
+}
+.q-b {
+	display: none !important;
+}
+
+.result-c {
+	height: 100%;
+	width: 100%;
+	display: none;
+	align-items: center;
+	justify-content: center;
+
+	font-size: 70px;
+	color: rgba(0, 0, 0, 0.3);
+	font-weight: 700;
+	letter-spacing: 2px;
+}
+
+.result-c > i {
+	color: var(--green);
+	font-size: 120px;
+	margin-right: 50px;
+}
+
+.result-c.active {
+	display: flex;
+}
+
+.q-t {
+	display: none;
+}
+
+.q-t.active {
+	display: flex;
+}
+
+.q-n {
+	display: none;
+}
+
+.q-n.active {
+	display: flex;
+}
+
+.q-c {
+	display: none;
+}
+
+.q-c.active {
+	display: flex;
+}
+
+.img-view {
+	display: none;
+	transition: all linear 0.5s;
+}
+
+.img-view.active {
+	display: flex !important;
 }
