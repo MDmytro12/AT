@@ -160,6 +160,11 @@ const createWindow = () => {
 			AboutProgramScreen = null;
 		}
 
+		if (EditScreen) {
+			EditScreen.close();
+			EditScreen = null;
+		}
+
 		mainWindow.show();
 	});
 
@@ -248,14 +253,18 @@ const createWindow = () => {
 	// Edit
 
 	ipcMain.on('open-edit', () => {
+		if (mainWindow) {
+			mainWindow.hide();
+		}
+
 		if (!EditScreen) {
 			EditScreen = new BrowserWindow({
-				width: parseInt(screenWidth * 0.6),
-				height: parseInt(screenHeight * 0.6),
-				minHeight: parseInt(screenHeight * 0.6),
-				minWidth: parseInt(screenWidth * 0.6),
-				maxHeight: parseInt(screenHeight * 0.6),
-				maxWidth: parseInt(screenWidth * 0.6),
+				width: parseInt(screenWidth * 0.9),
+				height: parseInt(screenHeight * 0.7),
+				minHeight: parseInt(screenHeight * 0.7),
+				minWidth: parseInt(screenWidth * 0.9),
+				maxHeight: parseInt(screenHeight * 0.7),
+				maxWidth: parseInt(screenWidth * 0.9),
 				webPreferences: {
 					nodeIntegration: true,
 					contextIsolation: false,

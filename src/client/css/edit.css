@@ -1,0 +1,40 @@
+@import url(../css/variables.css);
+
+.del-c,
+.ch-c,
+.add-c {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.a-b-c {
+	top: 3%;
+	left: 3%;
+}
+
+/* Deactive */
+
+.add-c {
+	display: none;
+}
+
+.add-c.active {
+	display: flex;
+}
+
+.del-c {
+	display: none;
+}
+
+.del-c.active {
+	display: flex;
+}
+
+.ch-c {
+	display: none;
+}
+
+.ch-c.active {
+	display: flex;
+}

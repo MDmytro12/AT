@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="../css/index.css" />
+		<link rel="stylesheet" href="../css/fonts.css" />
+		<link
+			rel="stylesheet"
+			href="../css/fontawesome-free-5.15.4-web/css/all.css"
+		/>
+		<link rel="stylesheet" href="../css/edit.css" />
+	</head>
+	<body>
+		<header style="-webkit-app-region: drag">
+			<div class="header-c">
+				<i class="fas fa-truck animate__animated animate__backInLeft"></i>
+
+				<p class="app-name">
+					<span class="r"> Правила </span>
+					<span class="y"> Дорожнього </span>
+					<span class="g"> Руху </span>
+					2022
+				</p>
+			</div>
+		</header>
+
+		<main>
+			<div class="logout-c" id="btn-logout">
+				<i class="fas fa-door-open"></i>
+			</div>
+
+			<div class="image-c"></div>
+
+			<div class="btn-c active">
+				<div class="btn-i" id="btn-add">
+					<i class="fas fa-folder-plus"></i>
+					<p>Додати нове запитання</p>
+				</div>
+
+				<div class="btn-i" id="btn-del">
+					<i class="fas fa-trash-alt"></i>
+					<p>Видалити запитання</p>
+				</div>
+
+				<div class="btn-i" id="btn-ch">
+					<i class="fas fa-exchange-alt"></i>
+					<p>Змінити запитання</p>
+				</div>
+			</div>
+
+			<div class="add-c">
+				<div class="logout-c a-b-c">
+					<i class="fas fa-arrow-left"></i>
+				</div>
+
+				<div class="que-name-c">
+					<div class="que-name-t">
+						<p>Введіть запитання :</p>
+					</div>
+					<input
+						type="text"
+						placeholder="нове запитання ... "
+						id="new-question"
+					/>
+				</div>
+
+				<div class="que-correct-c">
+					<div class="que-correct-t">
+						<p>Введіть номер правильної відповіді :</p>
+					</div>
+					<input type="text" placeholder="номер ... " id="new-question" />
+				</div>
+
+				<div class="que-as-c">
+					<div class="que-as-t">
+						<p>Введіть всі варіанти відповідей :</p>
+						<i class="fas fa-plus-circle" id="add-item"></i>
+					</div>
+
+					<div class="que-as-m">
+						<div class="que-as-i">
+							<input type="text" placeholder="Введіть відповідь ..." />
+						</div>
+					</div>
+				</div>
+
+				<div class="que-img-c">
+					<div class="que-img-t">
+						<p>Оберіть зображення до запитання :</p>
+					</div>
+					<div class="que-img-m">
+						<input type="file" id="select-img" />
+						<i class="fas fa-images"></i>
+					</div>
+
+					<div class="que-img-list">
+						<img src="" alt="Image!" />
+						<p>fwefwewfewfeewewfewfewf</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="del-c">
+				<div class="logout-c a-b-c">
+					<i class="fas fa-arrow-left"></i>
+				</div>
+			</div>
+
+			<div class="ch-c">
+				<div class="logout-c a-b-c">
+					<i class="fas fa-arrow-left"></i>
+				</div>
+			</div>
+
+			<div class="logout-c --back" id="btn-back">
+				<i class="fas fa-undo-alt"></i>
+			</div>
+		</main>
+		<script src="../actions/edit.action.js"></script>
+	</body>
+</html>
