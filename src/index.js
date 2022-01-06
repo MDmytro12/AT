@@ -153,6 +153,11 @@ const createWindow = () => {
 			ExamResultScreen = null;
 		}
 
+		if (AboutProgramScreen) {
+			AboutProgramScreen.close();
+			AboutProgramScreen = null;
+		}
+
 		mainWindow.show();
 	});
 
@@ -206,6 +211,33 @@ const createWindow = () => {
 
 			ExamScreen.loadFile(
 				path.resolve(__dirname, 'client', 'html', 'exam.html'),
+			);
+		}
+	});
+
+	// Aboute
+
+	ipcMain.on('open-about', () => {
+		if (mainWindow) {
+			mainWindow.hide();
+		}
+		if (!AboutProgramScreen) {
+			AboutProgramScreen = new BrowserWindow({
+				width: parseInt(screenWidth * 0.6),
+				height: parseInt(screenHeight * 0.6),
+				minHeight: parseInt(screenHeight * 0.6),
+				minWidth: parseInt(screenWidth * 0.6),
+				maxHeight: parseInt(screenHeight * 0.6),
+				maxWidth: parseInt(screenWidth * 0.6),
+				webPreferences: {
+					nodeIntegration: true,
+					contextIsolation: false,
+				},
+				// frame: false,
+			});
+
+			AboutProgramScreen.loadFile(
+				path.resolve(__dirname, 'client', 'html', 'about.html'),
 			);
 		}
 	});

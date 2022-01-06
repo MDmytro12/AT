@@ -21,3 +21,7 @@ btnStartTest.addEventListener('click', () => {
 btnStartExam.addEventListener('click', () => {
 	ipcRenderer.send('open-exam');
 });
+
+btnAboutPro.addEventListener('click', () => {
+	ipcRenderer.send('open-about');
+});

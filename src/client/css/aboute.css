@@ -1,0 +1,143 @@
+@import url('../css/variables.css');
+
+#btn-back {
+	left: 3%;
+}
+
+.a-c {
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+
+	flex-direction: column;
+	align-items: center;
+}
+
+.a-a-c,
+.a-n-c,
+.p-c,
+.d-c,
+.v-c {
+	width: 100%;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.a-t,
+.p-t,
+.d-t,
+.v-t {
+	display: flex;
+
+	width: 90%;
+	font-size: 25px;
+	font-weight: 800;
+
+	padding-left: 50px;
+	padding-top: 10px;
+	color: var(--main);
+}
+
+.a-t > i,
+.p-t > i,
+.d-t > i,
+.v-t > i {
+	margin-right: 15px;
+	font-size: 30px;
+	color: var(--icon);
+}
+
+.a-n,
+.p-m,
+.d-d,
+.v-m {
+	width: 80%;
+
+	font-size: 20px;
+	font-style: italic;
+	color: var(--hover);
+
+	padding-top: 10px;
+}
+
+.unit {
+	font-weight: 800;
+	margin-right: 25px;
+}
+
+.a-n {
+	width: 90%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.p-m > p > span {
+	font-weight: 700;
+}
+
+.w {
+	color: var(--main);
+}
+
+.d-c,
+.v-c {
+	width: 95%;
+	flex-direction: row;
+	justify-content: space-around;
+	font-weight: 700;
+
+	margin-top: 15px;
+}
+
+.snow-m,
+.s-1,
+.s-2,
+.s-3,
+.s-4 {
+	position: absolute;
+}
+
+.snow-m {
+	top: 78%;
+	right: 20%;
+
+	font-size: 100px;
+
+	color: rgba(32, 213, 236, 0.911);
+}
+
+.s-1,
+.s-2,
+.s-3 {
+	font-size: 40px;
+
+	color: rgba(146, 224, 235, 0.911);
+}
+
+.s-1 {
+	top: 70%;
+	right: 19%;
+}
+
+.s-2 {
+	top: 45%;
+	right: 3%;
+	font-size: 30px;
+}
+
+.s-3 {
+	top: 87%;
+	right: 50%;
+	font-size: 40px;
+}
+
+.s-4 {
+	top: 44%;
+	right: 9%;
+	font-size: 50px;
+	color: var(--hover);
+	transform: rotate(30deg);
+}
