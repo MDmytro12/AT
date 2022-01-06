@@ -113,6 +113,17 @@ class DBController {
 				});
 		});
 	}
+
+	static async setTestResult(data) {
+		mongoClient.connect(MONGO_URL, MONGO_OPTIONS, (err, client) => {
+			if (err) {
+				this.showError();
+				return;
+			}
+
+			client.db('at').collection('results').insertOne(data);
+		});
+	}
 }
 
 module.exports = DBController;

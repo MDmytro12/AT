@@ -49,12 +49,9 @@
 	font-size: 35px;
 	font-weight: 500;
 
-	padding-top: 30px;
-	padding-bottom: 30px;
-	height: 10%;
+	height: 15%;
 	overflow-y: auto;
 	cursor: pointer;
-	margin-top: 10px;
 	letter-spacing: 1px;
 }
 
@@ -66,17 +63,19 @@
 	font-size: 45px;
 	color: var(--yellow);
 	margin-right: 25px;
+	padding-top: 20px;
 }
 
 .q-t > p {
 	text-align: left;
 	margin-top: 80px;
 	padding-bottom: 60px;
+	padding-top: 20px;
 }
 
 /* Question body */
 .q-b {
-	height: 70%;
+	height: 65%;
 	width: 100%;
 	display: flex;
 	align-items: center;
@@ -337,6 +336,21 @@
 	color: var(--main);
 	font-weight: 800;
 	font-size: 24px;
+}
+
+.q-btns-i.success {
+	background-color: var(--green);
+	color: white;
+}
+
+.q-btns-i.error {
+	background-color: var(--red);
+	color: white;
+}
+
+.q-btns-i:hover.success,
+.q-btns-i:hover.error {
+	color: white;
 }
 
 .q-comm-c {

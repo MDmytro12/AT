@@ -13,14 +13,17 @@ const btnComment = document.querySelector('.q-comm-c');
 
 let ALL_QUESTION = [];
 let ALL_QUESTION_BUFFER = [];
-let CURRENT_QUESTION_NUMBER = null;
+let CURRENT_QUESTION_NUMBER = 1;
 let CURRENT_20_QUESTIONS = [];
 let CURRENT_MODULE_NUMBER = 1;
 let CORRECT_QESTION_INDEX = 1;
 let IMAGE_VIEW_PATH = '';
 let QUESTIONS_PART_COUNT = 0;
 let CORRECT_ANSWERS_COUNT = [0];
-let isFirs20Questions = true;
+let ERROR_ANSWERS_COUNT = [0];
+let TOTAL_QUESTION_COUTN = 0;
+
+let JOURNAL_ANSWERS = {};
 
 // functions
 
@@ -49,6 +52,7 @@ function AnswerSuccess() {
 	`;
 
 	CORRECT_ANSWERS_COUNT[CORRECT_ANSWERS_COUNT.length - 1]++;
+	JOURNAL_ANSWERS[CURRENT_QUESTION_NUMBER + QUESTIONS_PART_COUNT] = 'success';
 }
 
 function AnswerError() {
@@ -60,6 +64,9 @@ function AnswerError() {
 		<i class="fas fa-exclamation-circle" style="color: var(--red);" ></i>
 		<p>Не правильна відповідь!</p>
 	`;
+
+	ERROR_ANSWERS_COUNT[ERROR_ANSWERS_COUNT.length - 1]++;
+	JOURNAL_ANSWERS[CURRENT_QUESTION_NUMBER + QUESTIONS_PART_COUNT] = 'error';
 }
 
 function AnswerToNormalState() {
@@ -99,32 +106,31 @@ function setImageListeners() {
 }
 
 function setNextQuestion() {
-	if (CURRENT_QUESTION_NUMBER === null) {
-		CURRENT_QUESTION_NUMBER = 1;
-	}
+	if (CURRENT_QUESTION_NUMBER === 21) {
+		btnNextPartQuestoins.click();
+	} else {
+		const currentQuestion = CURRENT_20_QUESTIONS[CURRENT_QUESTION_NUMBER - 1];
 
-	const currentQuestion = CURRENT_20_QUESTIONS[CURRENT_QUESTION_NUMBER - 1];
-
-	document.querySelector('.q-t > p').innerHTML = `
+		document.querySelector('.q-t > p').innerHTML = `
 		<span>${currentQuestion.moduleNumber}.</span>
 		${currentQuestion.question}
 	`;
 
-	if (currentQuestion.isImage) {
-		chageActiveStateElement(document.querySelector('.q-i-c'), true, 'active');
-		chageActiveStateElement(document.querySelector('.q-a-c'), false, 'one');
+		if (currentQuestion.isImage) {
+			chageActiveStateElement(document.querySelector('.q-i-c'), true, 'active');
+			chageActiveStateElement(document.querySelector('.q-a-c'), false, 'one');
 
-		let questionImages = getQuestionImages(currentQuestion);
+			let questionImages = getQuestionImages(currentQuestion);
 
-		let imagesHTML = `
+			let imagesHTML = `
 			<div class="q-i-c-t">
 				<i class="fas fa-images"></i>
 				<p class="">Зображення</p>
 			</div>
 		`;
 
-		questionImages.forEach((image, index) => {
-			imagesHTML += `
+			questionImages.forEach((image, index) => {
+				imagesHTML += `
 				<div class="q-i-i">
 					<p>
 						<span> <i class="far fa-image"></i></span>
@@ -140,25 +146,29 @@ function setNextQuestion() {
 					)}" alt="Question image!" />
 				</div>
 			`;
-		});
+			});
 
-		document.querySelector('.q-i-c').innerHTML = imagesHTML;
+			document.querySelector('.q-i-c').innerHTML = imagesHTML;
 
-		setImageListeners();
-	} else {
-		chageActiveStateElement(document.querySelector('.q-i-c'), false, 'active');
-		chageActiveStateElement(document.querySelector('.q-a-c'), true, 'one');
-	}
+			setImageListeners();
+		} else {
+			chageActiveStateElement(
+				document.querySelector('.q-i-c'),
+				false,
+				'active',
+			);
+			chageActiveStateElement(document.querySelector('.q-a-c'), true, 'one');
+		}
 
-	let answerHTML = `
+		let answerHTML = `
 		<div class="q-i-c-t">
 			<i class="fas fa-question-circle"></i>
 			<p>Питання</p>
 		</div>
 	`;
 
-	Object.keys(JSON.parse(currentQuestion.answers)).forEach((a, index) => {
-		answerHTML += `
+		Object.keys(JSON.parse(currentQuestion.answers)).forEach((a, index) => {
+			answerHTML += `
 			<div class="q-a-i" id="${index + 1}">
 				<p>
 					<span>${index + 1}.</span>
@@ -166,28 +176,14 @@ function setNextQuestion() {
 				</p>
 			</div>
 		`;
-	});
-
-	document.querySelector('.q-a-c').innerHTML = answerHTML;
-
-	CORRECT_QESTION_INDEX = currentQuestion.correctAnswer;
-
-	document.querySelectorAll('.q-a-i').forEach((answer) => {
-		answer.addEventListener('click', () => {
-			if (parseInt(answer.id) === CORRECT_QESTION_INDEX) {
-				AnswerSuccess();
-			} else {
-				AnswerError();
-			}
-
-			setTimeout(() => {
-				GoToNextQuestion();
-				AnswerToNormalState();
-			}, 2000);
 		});
-	});
 
-	SetAnswerListeners();
+		document.querySelector('.q-a-c').innerHTML = answerHTML;
+
+		CORRECT_QESTION_INDEX = currentQuestion.correctAnswer;
+
+		SetAnswerListeners();
+	}
 }
 
 function SetAnswerListeners() {
@@ -200,14 +196,20 @@ function SetAnswerListeners() {
 			}
 
 			setTimeout(() => {
-				GoToNextQuestion();
-				AnswerToNormalState();
+				if (
+					TOTAL_QUESTION_COUTN ===
+					CURRENT_QUESTION_NUMBER + QUESTIONS_PART_COUNT
+				) {
+					finishTest();
+				} else {
+					setNavigationButtons();
+					GoToNextQuestion();
+					AnswerToNormalState();
+				}
 			}, 2000);
 		});
 	});
 }
-
-function setPrevQuestion() {}
 
 function getNext20Q() {
 	CURRENT_20_QUESTIONS = [];
@@ -235,8 +237,14 @@ function setNavigationButtons() {
 	let btnsHTML = '';
 
 	for (let i = 0; i < CURRENT_20_QUESTIONS.length; i++) {
+		let aClass = '';
+
+		if ((i + 1 + QUESTIONS_PART_COUNT).toString() in JOURNAL_ANSWERS) {
+			aClass = JOURNAL_ANSWERS[i + 1 + QUESTIONS_PART_COUNT];
+		}
+
 		btnsHTML += `
-			<div class="q-btns-i" id="${i + 1 + QUESTIONS_PART_COUNT}">
+			<div class="q-btns-i ${aClass}" id="${i + 1 + QUESTIONS_PART_COUNT}">
 				<p>${i + 1 + QUESTIONS_PART_COUNT}</p>
 			</div>
 		`;
@@ -246,24 +254,76 @@ function setNavigationButtons() {
 
 	document.querySelectorAll('.q-btns-i').forEach((btn) => {
 		btn.addEventListener('click', () => {
-			CURRENT_QUESTION_NUMBER = parseInt(btn.id);
+			if (QUESTIONS_PART_COUNT > 0) {
+				CURRENT_QUESTION_NUMBER = parseInt(btn.id - QUESTIONS_PART_COUNT);
+			} else {
+				CURRENT_QUESTION_NUMBER = parseInt(btn.id);
+			}
+
 			setNextQuestion();
 		});
 	});
 }
 
+function getPrev20Q() {
+	CURRENT_20_QUESTIONS.reverse();
+
+	for (let k = 0; k < CURRENT_20_QUESTIONS.length; k++) {
+		ALL_QUESTION.push(CURRENT_20_QUESTIONS[k]);
+	}
+
+	CURRENT_20_QUESTIONS = [];
+
+	ALL_QUESTION_BUFFER.forEach((item, index) => {
+		if (index >= QUESTIONS_PART_COUNT && index < QUESTIONS_PART_COUNT + 20) {
+			CURRENT_20_QUESTIONS.push(item);
+		}
+	});
+}
+
+function finishTest() {
+	let correctAnswers = CORRECT_ANSWERS_COUNT.reduce(function (total, value) {
+		return total + value;
+	}, 0);
+	let errorAnswers = ERROR_ANSWERS_COUNT.reduce(function (total, value) {
+		return total + value;
+	}, 0);
+	const testResult = {
+		correctAnswers,
+		totalAnswers: errorAnswers + correctAnswers,
+	};
+	ipcRenderer.send('set-test-result', testResult);
+	ipcRenderer.send('open-result');
+}
 // listeners
 
 btnNextPartQuestoins.addEventListener('click', () => {
 	if (ALL_QUESTION.length > 0) {
 		QUESTIONS_PART_COUNT += 20;
-		CURRENT_QUESTION_NUMBER = null;
+		CURRENT_QUESTION_NUMBER = 1;
 		CORRECT_ANSWERS_COUNT.push(0);
+		ERROR_ANSWERS_COUNT.push(0);
 		getNext20Q();
 		setNextQuestion();
 		setNavigationButtons();
 	} else {
-		ipcRenderer.send('open-result');
+		finishTest();
+	}
+});
+
+btnPrevPartQuestions.addEventListener('click', () => {
+	if (QUESTIONS_PART_COUNT !== 0) {
+		QUESTIONS_PART_COUNT -= 20;
+		CURRENT_QUESTION_NUMBER = 1;
+		CORRECT_ANSWERS_COUNT.pop();
+		ERROR_ANSWERS_COUNT.pop();
+
+		getPrev20Q();
+
+		setNextQuestion();
+		setNavigationButtons();
+	} else {
+		ipcRenderer.send('back-test');
 	}
 });
 
@@ -284,12 +344,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 ipcRenderer.on('r-g-all-q', (e, questions) => {
-	ALL_QUESTION = questions;
-	ALL_QUESTION_BUFFER = questions;
+	ALL_QUESTION = questions.filter((i) => i);
+	ALL_QUESTION_BUFFER = questions.map((i) => i);
+	TOTAL_QUESTION_COUTN = questions.length;
 	ALL_QUESTION.reverse();
 	getNext20Q();
-	setNextQuestion();
 	setNavigationButtons();
+	setNextQuestion();
 });
 
 ipcRenderer.on('gi-current-category', (e, { moduleNumber }) => {

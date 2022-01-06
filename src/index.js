@@ -180,6 +180,13 @@ const createWindow = () => {
 	ipcMain.on('g-current-c', async () => {
 		await DBController.getCurrentCategory(TestScreen);
 	});
+
+	ipcMain.on('set-test-result', async (e, data) => {
+		DBController.setTestResult({
+			...data,
+			date: Date.now(),
+		});
+	});
 };
 
 // This method will be called when Electron has finished
