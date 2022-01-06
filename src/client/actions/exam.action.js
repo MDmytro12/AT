@@ -127,8 +127,6 @@ function setNextQuestion() {
 		ClearCurrentBtn();
 		setCurrentBtn();
 
-		console.log(currentQuestion.correctAnswer);
-
 		document.querySelector('.q-t > p').innerHTML = `
 		<span>${CURRENT_QUESTION_NUMBER + QUESTIONS_PART_COUNT}.</span>
 		${currentQuestion.question}
