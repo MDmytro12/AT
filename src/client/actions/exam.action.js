@@ -1,5 +1,6 @@
 const { ipcRenderer } = require('electron');
 const fs = require('fs');
+const { parse } = require('path');
 const path = require('path');
 
 // constants
@@ -34,12 +35,7 @@ function getQuestionImages(currentQuestion) {
 	let allImages = fs.readdirSync(
 		path.resolve(__dirname, '..', 'assets', 'img', imageDirectory[0]),
 	);
-	console.log(currentQuestion);
-	console.log(
-		allImages.filter(
-			(im) => im.split('.')[0] === `${currentQuestion.moduleNumber}`,
-		),
-	);
+
 	return allImages.filter(
 		(im) => im.split('.')[0] === `${currentQuestion.moduleNumber}`,
 	);
@@ -131,6 +127,8 @@ function setNextQuestion() {
 		ClearCurrentBtn();
 		setCurrentBtn();
 
+		console.log(currentQuestion.correctAnswer);
+
 		document.querySelector('.q-t > p').innerHTML = `
 		<span>${CURRENT_QUESTION_NUMBER + QUESTIONS_PART_COUNT}.</span>
 		${currentQuestion.question}
@@ -200,7 +198,7 @@ function setNextQuestion() {
 
 		document.querySelector('.q-a-c').innerHTML = answerHTML;
 
-		CORRECT_QESTION_INDEX = currentQuestion.correctAnswer;
+		CORRECT_QESTION_INDEX = parseInt(currentQuestion.correctAnswer);
 
 		SetAnswerListeners();
 	}

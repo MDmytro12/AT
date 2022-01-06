@@ -196,7 +196,7 @@ function setNextQuestion() {
 
 		document.querySelector('.q-a-c').innerHTML = answerHTML;
 
-		CORRECT_QESTION_INDEX = currentQuestion.correctAnswer;
+		CORRECT_QESTION_INDEX = parseInt(currentQuestion.correctAnswer);
 
 		SetAnswerListeners();
 	}
@@ -332,7 +332,7 @@ function finishTest() {
 function ShowComment() {
 	chageActiveStateElement(document.querySelector('.q-c'), false);
 	chageActiveStateElement(document.querySelector('.comment-c'), true);
-	console.log();
+
 	document.querySelector('.comment-c > .c-m > p').innerText = JSON.parse(
 		CURRENT_20_QUESTIONS[CURRENT_QUESTION_NUMBER - 1].answers,
 	)[CURRENT_20_QUESTIONS[CURRENT_QUESTION_NUMBER - 1].correctAnswer];
