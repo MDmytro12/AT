@@ -17,7 +17,7 @@ const createWindow = () => {
 	const screenHeight = screen.getPrimaryDisplay().bounds.height;
 
 	let ChooseModuleScreen,
-		SettingScreen,
+		EditScreen,
 		ResultScreen,
 		ExamResultScreen,
 		AboutProgramScreen,
@@ -63,6 +63,7 @@ const createWindow = () => {
 					nodeIntegration: true,
 					contextIsolation: false,
 				},
+				frame: false,
 			});
 			ChooseModuleScreen.loadFile(
 				path.resolve(__dirname, 'client', 'html', 'module.html'),
@@ -103,7 +104,7 @@ const createWindow = () => {
 					nodeIntegration: true,
 					contextIsolation: false,
 				},
-				// frame: false,
+				frame: false,
 			});
 
 			TestScreen.loadFile(
@@ -135,6 +136,7 @@ const createWindow = () => {
 					nodeIntegration: true,
 					contextIsolation: false,
 				},
+				frame: false,
 			});
 			ChooseModuleScreen.loadFile(
 				path.resolve(__dirname, 'client', 'html', 'module.html'),
@@ -181,6 +183,7 @@ const createWindow = () => {
 					nodeIntegration: true,
 					contextIsolation: false,
 				},
+				frame: false,
 			});
 
 			ResultScreen.loadFile(
@@ -206,7 +209,7 @@ const createWindow = () => {
 					nodeIntegration: true,
 					contextIsolation: false,
 				},
-				// frame: false,
+				frame: false,
 			});
 
 			ExamScreen.loadFile(
@@ -233,11 +236,35 @@ const createWindow = () => {
 					nodeIntegration: true,
 					contextIsolation: false,
 				},
-				// frame: false,
+				frame: false,
 			});
 
 			AboutProgramScreen.loadFile(
 				path.resolve(__dirname, 'client', 'html', 'about.html'),
+			);
+		}
+	});
+
+	// Edit
+
+	ipcMain.on('open-edit', () => {
+		if (!EditScreen) {
+			EditScreen = new BrowserWindow({
+				width: parseInt(screenWidth * 0.6),
+				height: parseInt(screenHeight * 0.6),
+				minHeight: parseInt(screenHeight * 0.6),
+				minWidth: parseInt(screenWidth * 0.6),
+				maxHeight: parseInt(screenHeight * 0.6),
+				maxWidth: parseInt(screenWidth * 0.6),
+				webPreferences: {
+					nodeIntegration: true,
+					contextIsolation: false,
+				},
+				frame: false,
+			});
+
+			EditScreen.loadFile(
+				path.resolve(__dirname, 'client', 'html', 'edit.html'),
 			);
 		}
 	});
@@ -313,12 +340,17 @@ const createWindow = () => {
 					nodeIntegration: true,
 					contextIsolation: false,
 				},
+				frame: false,
 			});
 
 			ExamResultScreen.loadFile(
 				path.resolve(__dirname, 'client', 'html', 'exam.result.html'),
 			);
 		}
+	});
+
+	ipcMain.on('check-login', (e, password) => {
+		DBController.checkPassword(mainWindow, password);
 	});
 };
 

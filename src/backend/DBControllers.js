@@ -14,6 +14,30 @@ class DBController {
 		return Math.floor(Math.random() * (max - min) + min);
 	}
 
+	static async checkPassword(window, password) {
+		mongoClient.connect(MONGO_URL, MONGO_OPTIONS, (err, client) => {
+			if (err) {
+				this.showError();
+				return;
+			}
+
+			client
+				.db('at')
+				.collection('auth')
+				.findOne({ password }, (e, r) => {
+					if (e) {
+						this.showError();
+						return;
+					}
+					if (r) {
+						window.send('r-check-login', true);
+					} else {
+						window.send('r-check-login', false);
+					}
+				});
+		});
+	}
+
 	static async getRandow40Questions(window) {
 		mongoClient.connect(MONGO_URL, MONGO_OPTIONS, (e, client) => {
 			if (e) {

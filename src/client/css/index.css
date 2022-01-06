@@ -128,3 +128,106 @@ i {
 	transform: rotate(360deg);
 	color: rgba(55, 247, 55, 0.9);
 }
+
+.login-c {
+	width: 100%;
+	height: 100%;
+
+	flex-direction: column;
+
+	align-items: center;
+	justify-content: center;
+}
+
+.login-c > input {
+	outline: none;
+	border: none;
+
+	border-bottom: 2px solid var(--main);
+
+	font-size: 30px;
+	text-align: center;
+
+	padding-bottom: 5px;
+
+	width: 70%;
+}
+
+.login-r {
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	font-size: 40px;
+	color: var(--hover);
+	font-weight: 700;
+}
+
+.login-r > i {
+	font-size: 200px;
+	color: var(--red);
+	margin-bottom: 30px;
+}
+
+.btn-c {
+	display: none;
+}
+
+.btn-c.active {
+	display: flex;
+}
+
+.login-c {
+	display: none;
+}
+
+.login-c.active {
+	display: flex;
+}
+
+.login-r {
+	display: none;
+}
+
+.login-r.active {
+	display: flex;
+}
+
+.logout-c {
+	top: 78%;
+	right: 5%;
+}
+
+.logout-c.--back {
+	left: 5%;
+	top: 79%;
+	transition: all linear 0.5s;
+}
+
+.logout-c.--back:hover {
+	transform: rotate(360deg);
+}
+
+.btn-log {
+	width: 70%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	font-size: 70px;
+
+	background-color: var(--main);
+	color: white;
+	border-radius: 100px;
+	margin-top: 40px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	cursor: pointer;
+	transition: all linear 0.5s;
+}
+
+.btn-log:hover {
+	background-color: var(--hover);
+	color: var(--main);
+	transform: translateX(5px) translateY(5px) translateZ(15px);
+}
