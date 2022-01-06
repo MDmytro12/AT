@@ -90,8 +90,10 @@ function drawResult() {
 	document.querySelector('.all').innerText = TOTAL_QUESTIONS_NUMBER;
 	document.querySelector('.part').innerText = RESULT.correctAnswers;
 
-	let assessmentIndicator = 0.95;
-	//RESULT.correctAnswers / TOTAL_QUESTIONS_NUMBER;
+	RESULT.correctAnswers =
+		RESULT.correctAnswers === 0 ? 1 : RESULT.correctAnswers;
+
+	let assessmentIndicator = RESULT.correctAnswers / TOTAL_QUESTIONS_NUMBER;
 	let assessHTML = '';
 
 	switch (true) {

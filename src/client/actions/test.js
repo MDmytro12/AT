@@ -124,6 +124,9 @@ function setNextQuestion() {
 	} else {
 		const currentQuestion = CURRENT_20_QUESTIONS[CURRENT_QUESTION_NUMBER - 1];
 
+		ClearCurrentBtn();
+		setCurrentBtn();
+
 		document.querySelector('.q-t > p').innerHTML = `
 		<span>${currentQuestion.moduleNumber}.</span>
 		${currentQuestion.question}
@@ -246,6 +249,23 @@ function chageActiveStateElement(e, s, classs = 'active') {
 	}
 }
 
+function setCurrentBtn() {
+	document.querySelectorAll('.q-btns-i').forEach((btn) => {
+		console.log(btn.id, CURRENT_QUESTION_NUMBER);
+		if (
+			btn.id === (CURRENT_QUESTION_NUMBER + QUESTIONS_PART_COUNT).toString()
+		) {
+			btn.classList.add('current');
+		}
+	});
+}
+
+function ClearCurrentBtn() {
+	document
+		.querySelectorAll('.q-btns-i')
+		.forEach((item) => chageActiveStateElement(item, false, 'current'));
+}
+
 function setNavigationButtons() {
 	let btnsHTML = '';
 
@@ -342,6 +362,9 @@ btnNextPartQuestoins.addEventListener('click', () => {
 		getNext20Q();
 		setNextQuestion();
 		setNavigationButtons();
+
+		ClearCurrentBtn();
+		setCurrentBtn();
 	} else {
 		finishTest();
 	}
@@ -358,6 +381,9 @@ btnPrevPartQuestions.addEventListener('click', () => {
 
 		setNextQuestion();
 		setNavigationButtons();
+
+		ClearCurrentBtn();
+		setCurrentBtn();
 	} else {
 		ipcRenderer.send('back-test');
 	}

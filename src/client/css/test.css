@@ -350,6 +350,11 @@
 	color: white;
 }
 
+.q-btns-i.current {
+	background-color: var(--blue);
+	color: white;
+}
+
 .q-btns-i:hover.success,
 .q-btns-i:hover.error {
 	color: white;
