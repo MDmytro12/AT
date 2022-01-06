@@ -9,7 +9,6 @@ const btnLogout = document.querySelector('#btn-logout');
 const btnImageViewClose = document.querySelector('.img-view > .btn-close');
 const btnNextPartQuestoins = document.querySelector('#btn-next');
 const btnPrevPartQuestions = document.querySelector('#btn-prev');
-const btnComment = document.querySelector('.q-comm-c');
 
 let ALL_QUESTION = [];
 let ALL_QUESTION_BUFFER = [];
@@ -30,12 +29,17 @@ let JOURNAL_ANSWERS = {};
 function getQuestionImages(currentQuestion) {
 	let imageDirectory = fs
 		.readdirSync(path.resolve(__dirname, '..', 'assets', 'img'))
-		.filter((i) => i === 'R' + CURRENT_MODULE_NUMBER);
+		.filter((i) => i === 'R' + currentQuestion.number);
 
 	let allImages = fs.readdirSync(
 		path.resolve(__dirname, '..', 'assets', 'img', imageDirectory[0]),
 	);
-
+	console.log(currentQuestion);
+	console.log(
+		allImages.filter(
+			(im) => im.split('.')[0] === `${currentQuestion.moduleNumber}`,
+		),
+	);
 	return allImages.filter(
 		(im) => im.split('.')[0] === `${currentQuestion.moduleNumber}`,
 	);
@@ -128,7 +132,7 @@ function setNextQuestion() {
 		setCurrentBtn();
 
 		document.querySelector('.q-t > p').innerHTML = `
-		<span>${currentQuestion.moduleNumber}.</span>
+		<span>${CURRENT_QUESTION_NUMBER + QUESTIONS_PART_COUNT}.</span>
 		${currentQuestion.question}
 	`;
 
@@ -157,7 +161,7 @@ function setNextQuestion() {
 						'..',
 						'assets',
 						'img',
-						`R${CURRENT_MODULE_NUMBER}`,
+						`R${currentQuestion.number}`,
 						image,
 					)}" alt="Question image!" />
 				</div>
@@ -325,32 +329,10 @@ function finishTest() {
 		totalAnswers: errorAnswers + correctAnswers,
 		moduleNumber: CURRENT_MODULE_NUMBER,
 	};
-	ipcRenderer.send('set-test-result', testResult);
-	ipcRenderer.send('open-result');
-}
-
-function ShowComment() {
-	chageActiveStateElement(document.querySelector('.q-c'), false);
-	chageActiveStateElement(document.querySelector('.comment-c'), true);
-	console.log();
-	document.querySelector('.comment-c > .c-m > p').innerText = JSON.parse(
-		CURRENT_20_QUESTIONS[CURRENT_QUESTION_NUMBER - 1].answers,
-	)[CURRENT_20_QUESTIONS[CURRENT_QUESTION_NUMBER - 1].correctAnswer];
-}
-
-function HideComment() {
-	chageActiveStateElement(document.querySelector('.q-c'), true);
-	chageActiveStateElement(document.querySelector('.comment-c'), false);
+	ipcRenderer.send('set-exam-results', testResult);
+	ipcRenderer.send('open-result-exam');
 }
 // listeners
-
-btnComment.addEventListener('click', () => {
-	ShowComment();
-
-	setTimeout(() => {
-		HideComment();
-	}, 5000);
-});
 
 btnNextPartQuestoins.addEventListener('click', () => {
 	if (ALL_QUESTION.length > 0) {
@@ -393,7 +375,7 @@ btnImageViewClose.addEventListener('click', () => {
 });
 
 btnBack.addEventListener('click', () => {
-	ipcRenderer.send('back-test');
+	ipcRenderer.send('back-main');
 });
 
 btnLogout.addEventListener('click', () => {
@@ -401,10 +383,10 @@ btnLogout.addEventListener('click', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-	ipcRenderer.send('g-current-c');
+	ipcRenderer.send('get-40-random');
 });
 
-ipcRenderer.on('r-g-all-q', (e, questions) => {
+ipcRenderer.on('r-exam-q', (e, questions) => {
 	ALL_QUESTION = questions.filter((i) => i);
 	ALL_QUESTION_BUFFER = questions.map((i) => i);
 	TOTAL_QUESTION_COUTN = questions.length;

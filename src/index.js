@@ -19,7 +19,9 @@ const createWindow = () => {
 	let ChooseModuleScreen,
 		SettingScreen,
 		ResultScreen,
+		ExamResultScreen,
 		AboutProgramScreen,
+		ExamScreen,
 		TestScreen;
 
 	const mainWindow = new BrowserWindow({
@@ -114,25 +116,44 @@ const createWindow = () => {
 		if (TestScreen) {
 			TestScreen.close();
 			TestScreen = null;
-
-			if (!ChooseModuleScreen) {
-				ChooseModuleScreen = new BrowserWindow({
-					width: parseInt(screenWidth * 0.7),
-					height: parseInt(screenHeight * 0.8),
-					minHeight: parseInt(screenHeight * 0.8),
-					maxHeight: parseInt(screenHeight * 0.8),
-					minWidth: parseInt(screenWidth * 0.7),
-					maxWidth: parseInt(screenWidth * 0.7),
-					webPreferences: {
-						nodeIntegration: true,
-						contextIsolation: false,
-					},
-				});
-				ChooseModuleScreen.loadFile(
-					path.resolve(__dirname, 'client', 'html', 'module.html'),
-				);
-			}
 		}
+
+		if (ExamScreen) {
+			ExamScreen.close();
+			ExamScreen = null;
+		}
+
+		if (!ChooseModuleScreen) {
+			ChooseModuleScreen = new BrowserWindow({
+				width: parseInt(screenWidth * 0.7),
+				height: parseInt(screenHeight * 0.8),
+				minHeight: parseInt(screenHeight * 0.8),
+				maxHeight: parseInt(screenHeight * 0.8),
+				minWidth: parseInt(screenWidth * 0.7),
+				maxWidth: parseInt(screenWidth * 0.7),
+				webPreferences: {
+					nodeIntegration: true,
+					contextIsolation: false,
+				},
+			});
+			ChooseModuleScreen.loadFile(
+				path.resolve(__dirname, 'client', 'html', 'module.html'),
+			);
+		}
+	});
+
+	ipcMain.on('back-main', () => {
+		if (ExamScreen) {
+			ExamScreen.close();
+			ExamScreen = null;
+		}
+
+		if (ExamResultScreen) {
+			ExamResultScreen.close();
+			ExamResultScreen = null;
+		}
+
+		mainWindow.show();
 	});
 
 	// Result sreen
@@ -159,6 +180,32 @@ const createWindow = () => {
 
 			ResultScreen.loadFile(
 				path.resolve(__dirname, 'client', 'html', 'result.html'),
+			);
+		}
+	});
+
+	// Exam
+
+	ipcMain.on('open-exam', () => {
+		if (mainWindow) {
+			mainWindow.hide();
+		}
+
+		if (!ExamScreen) {
+			ExamScreen = new BrowserWindow({
+				width: parseInt(screenWidth * 0.95),
+				height: parseInt(screenHeight * 0.85),
+				minHeight: parseInt(screenHeight * 0.85),
+				minWidth: parseInt(screenWidth * 0.95),
+				webPreferences: {
+					nodeIntegration: true,
+					contextIsolation: false,
+				},
+				// frame: false,
+			});
+
+			ExamScreen.loadFile(
+				path.resolve(__dirname, 'client', 'html', 'exam.html'),
 			);
 		}
 	});
@@ -198,6 +245,48 @@ const createWindow = () => {
 
 	ipcMain.on('get-q-q', async () => {
 		await DBController.getAllQuestionsByNumber(ResultScreen);
+	});
+
+	ipcMain.on('get-40-random', async () => {
+		await DBController.getRandow40Questions(ExamScreen);
+	});
+
+	ipcMain.on('clear-exam-result', async () => {
+		DBController.deleteExamResult();
+	});
+
+	ipcMain.on('get-exam-results', () => {
+		DBController.getExamResult(ExamResultScreen);
+	});
+
+	ipcMain.on('set-exam-results', (e, data) => {
+		DBController.setExamResult(data);
+	});
+
+	ipcMain.on('open-result-exam', () => {
+		if (ExamScreen) {
+			ExamScreen.close();
+			ExamScreen = null;
+		}
+
+		if (!ExamResultScreen) {
+			ExamResultScreen = new BrowserWindow({
+				width: parseInt(screenWidth * 0.5),
+				height: parseInt(screenHeight * 0.6),
+				minHeight: parseInt(screenHeight * 0.6),
+				maxHeight: parseInt(screenHeight * 0.6),
+				minWidth: parseInt(screenWidth * 0.5),
+				maxWidth: parseInt(screenWidth * 0.5),
+				webPreferences: {
+					nodeIntegration: true,
+					contextIsolation: false,
+				},
+			});
+
+			ExamResultScreen.loadFile(
+				path.resolve(__dirname, 'client', 'html', 'exam.result.html'),
+			);
+		}
 	});
 };
 

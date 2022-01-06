@@ -17,3 +17,7 @@ btnLogout.addEventListener('click', () => {
 btnStartTest.addEventListener('click', () => {
 	ipcRenderer.send('open-module');
 });
+
+btnStartExam.addEventListener('click', () => {
+	ipcRenderer.send('open-exam');
+});

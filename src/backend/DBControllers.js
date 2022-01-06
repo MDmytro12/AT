@@ -10,6 +10,58 @@ const MONGO_OPTIONS = {
 const { dialog } = require('electron');
 
 class DBController {
+	static randomNumber(min, max) {
+		return Math.floor(Math.random() * (max - min) + min);
+	}
+
+	static async getRandow40Questions(window) {
+		mongoClient.connect(MONGO_URL, MONGO_OPTIONS, (e, client) => {
+			if (e) {
+				this.showError();
+				return;
+			}
+
+			client
+				.db('at')
+				.collection('all-questions')
+				.find({})
+				.count((err, countAllQuestions) => {
+					let count = 0;
+					let allRandomNumber = [];
+
+					while (count < 40) {
+						let newNumber = this.randomNumber(1, countAllQuestions);
+
+						if (!(newNumber in allRandomNumber)) {
+							allRandomNumber.push(newNumber);
+							count++;
+						}
+					}
+
+					client
+						.db('at')
+						.collection('all-questions')
+						.find({})
+						.toArray((errr, result) => {
+							if (errr) {
+								this.showError();
+								return;
+							}
+
+							let randomQuestions = [];
+
+							allRandomNumber.forEach((r) => {
+								randomQuestions.push(result[r]);
+							});
+
+							result = null;
+
+							window.send('r-exam-q', randomQuestions);
+						});
+				});
+		});
+	}
+
 	static showError() {
 		dialog.showMessageBox({
 			title: 'Помилка!',
@@ -125,6 +177,28 @@ class DBController {
 		});
 	}
 
+	static async deleteExamResult() {
+		mongoClient.connect(MONGO_URL, MONGO_OPTIONS, (err, client) => {
+			if (err) {
+				this.showError();
+				return;
+			}
+
+			client.db('at').collection('exam-results').drop();
+		});
+	}
+
+	static async setExamResult(data) {
+		mongoClient.connect(MONGO_URL, MONGO_OPTIONS, (err, client) => {
+			if (err) {
+				this.showError();
+				return;
+			}
+
+			client.db('at').collection('exam-results').insertOne(data);
+		});
+	}
+
 	static async deleteAllResults() {
 		mongoClient.connect(MONGO_URL, MONGO_OPTIONS, (err, client) => {
 			if (err) {
@@ -146,6 +220,27 @@ class DBController {
 			client
 				.db('at')
 				.collection('results')
+				.findOne({}, (e, result) => {
+					if (e) {
+						this.showError();
+						return;
+					}
+
+					window.send('r-get-result', result);
+				});
+		});
+	}
+
+	static async getExamResult(window) {
+		mongoClient.connect(MONGO_URL, MONGO_OPTIONS, (err, client) => {
+			if (err) {
+				this.showError();
+				return;
+			}
+
+			client
+				.db('at')
+				.collection('exam-results')
 				.findOne({}, (e, result) => {
 					if (e) {
 						this.showError();
