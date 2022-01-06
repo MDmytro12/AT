@@ -1,3 +1,5 @@
+@import url('../../../node_modules/animate.css/animate.css');
+
 .header-c {
 	position: relative;
 }
@@ -503,4 +505,85 @@
 
 .img-view.active {
 	display: flex !important;
+}
+
+/* test comment */
+
+.comment-c {
+	width: 100%;
+	height: 100%;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-estart;
+}
+
+.comment-c.active {
+	display: flex;
+}
+
+.c-t {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	position: relative;
+
+	padding-top: 120px;
+	font-size: 50px;
+	font-weight: 800;
+}
+
+.c-t > .-gr {
+	font-size: 120px;
+	transform: rotate(-30deg) translateY(-20px) !important;
+	margin-right: 30px;
+
+	color: var(--blue);
+}
+
+.c-t > .-f,
+.-s,
+.-t {
+	position: absolute;
+}
+
+.-f {
+	color: rgba(20, 132, 224, 0.6);
+	top: 10%;
+	left: 50%;
+}
+
+.-s {
+	color: rgba(20, 132, 224, 0.8);
+	top: 25%;
+	left: 43%;
+}
+
+.-t {
+	color: rgba(20, 132, 224, 0.5);
+	top: 30%;
+	left: 60%;
+}
+
+.c-m {
+	width: 70%;
+	position: relative;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	overflow-y: auto;
+
+	padding: 50px;
+	margin-top: 40px;
+	letter-spacing: 1px;
+
+	font-size: 40px;
+
+	-webkit-box-shadow: 27px -4px 49px -2px rgba(34, 60, 80, 0.44);
+	-moz-box-shadow: 27px -4px 49px -2px rgba(34, 60, 80, 0.44);
+	box-shadow: 27px -4px 49px -2px rgba(34, 60, 80, 0.44);
 }

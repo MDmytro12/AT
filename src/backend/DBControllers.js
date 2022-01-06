@@ -124,6 +124,38 @@ class DBController {
 			client.db('at').collection('results').insertOne(data);
 		});
 	}
+
+	static async deleteAllResults() {
+		mongoClient.connect(MONGO_URL, MONGO_OPTIONS, (err, client) => {
+			if (err) {
+				this.showError();
+				return;
+			}
+
+			client.db('at').collection('results').drop();
+		});
+	}
+
+	static async getResult(window) {
+		mongoClient.connect(MONGO_URL, MONGO_OPTIONS, (err, client) => {
+			if (err) {
+				this.showError();
+				return;
+			}
+
+			client
+				.db('at')
+				.collection('results')
+				.findOne({}, (e, result) => {
+					if (e) {
+						this.showError();
+						return;
+					}
+
+					window.send('r-get-result', result);
+				});
+		});
+	}
 }
 
 module.exports = DBController;

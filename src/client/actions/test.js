@@ -51,7 +51,14 @@ function AnswerSuccess() {
 		<p>Правильна відповідь!</p>
 	`;
 
-	CORRECT_ANSWERS_COUNT[CORRECT_ANSWERS_COUNT.length - 1]++;
+	if (CURRENT_QUESTION_NUMBER.toString() in JOURNAL_ANSWERS) {
+		if (!JOURNAL_ANSWERS[CURRENT_QUESTION_NUMBER + QUESTIONS_PART_COUNT]) {
+			CORRECT_ANSWERS_COUNT[CORRECT_ANSWERS_COUNT.length - 1]++;
+		}
+	} else {
+		CORRECT_ANSWERS_COUNT[CORRECT_ANSWERS_COUNT.length - 1]++;
+	}
+
 	JOURNAL_ANSWERS[CURRENT_QUESTION_NUMBER + QUESTIONS_PART_COUNT] = 'success';
 }
 
@@ -65,7 +72,13 @@ function AnswerError() {
 		<p>Не правильна відповідь!</p>
 	`;
 
-	ERROR_ANSWERS_COUNT[ERROR_ANSWERS_COUNT.length - 1]++;
+	if (CURRENT_QUESTION_NUMBER.toString() in JOURNAL_ANSWERS) {
+		if (JOURNAL_ANSWERS[CURRENT_QUESTION_NUMBER + QUESTIONS_PART_COUNT]) {
+			ERROR_ANSWERS_COUNT[ERROR_ANSWERS_COUNT.length - 1]++;
+		}
+	} else {
+		ERROR_ANSWERS_COUNT[ERROR_ANSWERS_COUNT.length - 1]++;
+	}
 	JOURNAL_ANSWERS[CURRENT_QUESTION_NUMBER + QUESTIONS_PART_COUNT] = 'error';
 }
 
@@ -291,11 +304,34 @@ function finishTest() {
 	const testResult = {
 		correctAnswers,
 		totalAnswers: errorAnswers + correctAnswers,
+		moduleNumber: CURRENT_MODULE_NUMBER,
 	};
 	ipcRenderer.send('set-test-result', testResult);
 	ipcRenderer.send('open-result');
 }
+
+function ShowComment() {
+	chageActiveStateElement(document.querySelector('.q-c'), false);
+	chageActiveStateElement(document.querySelector('.comment-c'), true);
+	console.log();
+	document.querySelector('.comment-c > .c-m > p').innerText = JSON.parse(
+		CURRENT_20_QUESTIONS[CURRENT_QUESTION_NUMBER - 1].answers,
+	)[CURRENT_20_QUESTIONS[CURRENT_QUESTION_NUMBER - 1].correctAnswer];
+}
+
+function HideComment() {
+	chageActiveStateElement(document.querySelector('.q-c'), true);
+	chageActiveStateElement(document.querySelector('.comment-c'), false);
+}
 // listeners
+
+btnComment.addEventListener('click', () => {
+	ShowComment();
+
+	setTimeout(() => {
+		HideComment();
+	}, 5000);
+});
 
 btnNextPartQuestoins.addEventListener('click', () => {
 	if (ALL_QUESTION.length > 0) {

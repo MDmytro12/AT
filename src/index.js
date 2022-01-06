@@ -187,6 +187,18 @@ const createWindow = () => {
 			date: Date.now(),
 		});
 	});
+
+	ipcMain.on('clear-results', async () => {
+		await DBController.deleteAllResults();
+	});
+
+	ipcMain.on('get-result', async () => {
+		await DBController.getResult(ResultScreen);
+	});
+
+	ipcMain.on('get-q-q', async () => {
+		await DBController.getAllQuestionsByNumber(ResultScreen);
+	});
 };
 
 // This method will be called when Electron has finished
