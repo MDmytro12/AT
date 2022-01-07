@@ -269,7 +269,7 @@ const createWindow = () => {
 					nodeIntegration: true,
 					contextIsolation: false,
 				},
-				frame: false,
+				// frame: false,
 			});
 
 			EditScreen.loadFile(

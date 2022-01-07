@@ -2,6 +2,7 @@
 
 #btn-back {
 	left: 3%;
+	top: 80%;
 }
 
 .a-c {
@@ -140,4 +141,8 @@
 	font-size: 50px;
 	color: var(--hover);
 	transform: rotate(30deg);
+}
+
+.logout-c.--back:hover {
+	transform: rotate(0deg);
 }
