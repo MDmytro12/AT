@@ -279,7 +279,7 @@ label[for='select-img']:hover {
 
 	border-radius: 100px;
 
-	top: -260%;
+	top: -280%;
 }
 
 .que-mod-sd {
@@ -343,8 +343,68 @@ label[for='select-img']:hover {
 .que-mod-i-sd > p:hover > span {
 }
 
+.que-mod-m {
+	color: white;
+	background-color: var(--main);
+	align-items: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.que-mod-i {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 80%;
+	margin-top: 30px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-radius: 100px;
+	cursor: pointer;
+	transition: all linear 0.5s;
+}
+
+.que-mod-i:hover {
+	color: var(--main);
+	background-color: white;
+}
+
+.que-mod-i > p {
+	width: 95%;
+	white-space: nowrap;
+	overflow: hidden !important;
+	text-overflow: ellipsis;
+}
+
 .que-mod-m.active {
 	display: flex;
+}
+
+.btn-add-item {
+	background-color: var(--main);
+	width: 60%;
+	margin: 0 auto;
+	border-radius: 100px;
+	color: white;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	font-size: 30px;
+	font-weight: 700;
+
+	transition: all linear 0.5s;
+	cursor: pointer;
+}
+
+.btn-add-item > i {
+	margin-right: 20px;
+}
+
+.btn-add-item:hover {
+	color: var(--main);
+	background-color: white;
 }
 
 /* Deleting*/
