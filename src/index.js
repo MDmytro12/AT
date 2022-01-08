@@ -1,4 +1,4 @@
-const { app, BrowserWindow, screen, ipcMain } = require('electron');
+const { app, BrowserWindow, screen, ipcMain, dialog } = require('electron');
 const path = require('path');
 const DBController = require('./backend/DBControllers');
 
@@ -269,7 +269,7 @@ const createWindow = () => {
 					nodeIntegration: true,
 					contextIsolation: false,
 				},
-				// frame: false,
+				frame: false,
 			});
 
 			EditScreen.loadFile(
@@ -360,6 +360,17 @@ const createWindow = () => {
 
 	ipcMain.on('check-login', (e, password) => {
 		DBController.checkPassword(mainWindow, password);
+	});
+
+	ipcMain.on('show-error', (e, msg) => {
+		dialog.showMessageBox(EditScreen, {
+			title: 'Помилка підключення!',
+			message: msg
+				? msg
+				: ' Під час підключення до Бази Даних сталася помилка!',
+			type: 'error',
+			buttons: ['Зрозуміло'],
+		});
 	});
 };
 

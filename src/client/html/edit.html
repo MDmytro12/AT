@@ -31,7 +31,7 @@
 
 			<div class="image-c"></div>
 
-			<div class="btn-c">
+			<div class="btn-c active">
 				<div class="btn-i" id="btn-add">
 					<i class="fas fa-folder-plus"></i>
 					<p>Додати нове запитання</p>
@@ -41,19 +41,15 @@
 					<i class="fas fa-trash-alt"></i>
 					<p>Видалити запитання</p>
 				</div>
-
-				<div class="btn-i" id="btn-ch">
-					<i class="fas fa-exchange-alt"></i>
-					<p>Змінити запитання</p>
-				</div>
 			</div>
-
+			<div class="error-c">
+				<i class="fa fa-check-circle"></i>
+				<p>Запитання було успішно додано до Бази Даних!</p>
+			</div>
 			<div class="add-c">
 				<div class="logout-c a-b-c">
 					<i class="fas fa-arrow-left"></i>
 				</div>
-
-				<div class="error-c" style="position: absolute"></div>
 
 				<div class="add-row">
 					<div class="que-name-c">
@@ -80,7 +76,7 @@
 				<div class="que-as-c">
 					<div class="que-as-t">
 						<p>Введіть всі варіанти відповідей :</p>
-						<div class="add-a-btn">
+						<div class="add-a-btn" id="add-a-btn">
 							<i class="fas fa-plus-circle" id="add-item"></i>
 						</div>
 						<div class="add-a-btn" id="del-a-btn">
@@ -89,38 +85,6 @@
 					</div>
 
 					<div class="que-as-m">
-						<div class="que-as-i active">
-							<span> 2. </span>
-							<input type="text" placeholder="Додайте відповідь ..." />
-						</div>
-						<div class="que-as-i">
-							<span> 3. </span>
-							<input type="text" placeholder="Введіть відповідь ..." />
-						</div>
-						<div class="que-as-i">
-							<span> 4. </span>
-							<input type="text" placeholder="Введіть відповідь ..." />
-						</div>
-						<div class="que-as-i">
-							<span> 5. </span>
-							<input type="text" placeholder="Введіть відповідь ..." />
-						</div>
-						<div class="que-as-i">
-							<span> 6. </span>
-							<input type="text" placeholder="Введіть відповідь ..." />
-						</div>
-						<div class="que-as-i">
-							<span> 7. </span>
-							<input type="text" placeholder="Введіть відповідь ..." />
-						</div>
-						<div class="que-as-i">
-							<span> 8. </span>
-							<input type="text" placeholder="Введіть відповідь ..." />
-						</div>
-						<div class="que-as-i">
-							<span> 1. </span>
-							<input type="text" placeholder="Введіть відповідь ..." />
-						</div>
 						<div class="que-as-i">
 							<span> 1. </span>
 							<input type="text" placeholder="Введіть відповідь ..." />
@@ -142,30 +106,7 @@
 						</label>
 					</div>
 
-					<div class="que-img-list">
-						<div class="que-img-i">
-							<span>1.</span>
-							<img src="../assets/img/R1/10.png" alt="Image!" />
-							<p>
-								fwefwewfewfeewewfewfewfdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-							</p>
-						</div>
-						<div class="que-img-i">
-							<span>1.</span>
-							<img src="../assets/img/R1/10.png" alt="Image!" />
-							<p>fwefwewfewfeewewfewfewf</p>
-						</div>
-						<div class="que-img-i">
-							<span>1.</span>
-							<img src="../assets/img/R1/10.png" alt="Image!" />
-							<p>fwefwewfewfeewewfewfewf</p>
-						</div>
-						<div class="que-img-i">
-							<span>1.</span>
-							<img src="../assets/img/R1/10.png" alt="Image!" />
-							<p>fwefwewfewfeewewfewfewf</p>
-						</div>
-					</div>
+					<div class="que-img-list"></div>
 				</div>
 
 				<div class="que-mod-c">
@@ -178,62 +119,11 @@
 							<p class="">
 								<span> 1. </span>
 								INOIo
-								ewdwdwdwdwdwnfdwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwow
 							</p>
 						</div>
 					</div>
 
-					<div class="que-mod-m">
-						<div class="que-mod-i">
-							<p>
-								<span> 1. </span>
-								INOIo
-								ewdwdwdwdwdwnfdwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwow
-							</p>
-						</div>
-						<div class="que-mod-i">
-							<p>
-								<span> 1. </span>
-								INOIo
-								ewdwdwdwdwdwnfdwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwow
-							</p>
-						</div>
-						<div class="que-mod-i">
-							<p>
-								<span> 1. </span>
-								INOIo
-								ewdwdwdwdwdwnfdwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwow
-							</p>
-						</div>
-						<div class="que-mod-i">
-							<p>
-								<span> 1. </span>
-								INOIo
-								ewdwdwdwdwdwnfdwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwow
-							</p>
-						</div>
-						<div class="que-mod-i">
-							<p>
-								<span> 1. </span>
-								INOIo
-								ewdwdwdwdwdwnfdwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwow
-							</p>
-						</div>
-						<div class="que-mod-i">
-							<p>
-								<span> 1. </span>
-								INOIo
-								ewdwdwdwdwdwnfdwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwow
-							</p>
-						</div>
-						<div class="que-mod-i">
-							<p>
-								<span> 1. </span>
-								INOIo
-								ewdwdwdwdwdwnfdwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwow
-							</p>
-						</div>
-					</div>
+					<div class="que-mod-m"></div>
 				</div>
 
 				<div class="btn-add-item" id="btn-add-item">
@@ -242,7 +132,7 @@
 				</div>
 			</div>
 
-			<div class="del-c active">
+			<div class="del-c">
 				<div class="logout-c a-b-c" style="top: 0%">
 					<i class="fas fa-arrow-left"></i>
 				</div>
@@ -267,197 +157,10 @@
 								Додаткові питання щодо категорій С1,С (будова та терміни)
 							</p>
 						</div>
-						<div class="cat-i">
-							<p>
-								<span>2.</span>
-								Додаткові питання щодо категорій С1,С (будова та терміни)
-							</p>
-						</div>
-						<div class="cat-i">
-							<p>
-								<span>2.</span>
-								Додаткові питання щодо категорій С1,С (будова та терміни)
-							</p>
-						</div>
-						<div class="cat-i">
-							<p>
-								<span>2.</span>
-								Додаткові питання щодо категорій С1,С (будова та терміни)
-							</p>
-						</div>
-						<div class="cat-i">
-							<p>
-								<span>2.</span>
-								Додаткові питання щодо категорій С1,С (будова та терміни)
-							</p>
-						</div>
-						<div class="cat-i">
-							<p>
-								<span>2.</span>
-								Додаткові питання щодо категорій С1,С (будова та терміни)
-							</p>
-						</div>
-						<div class="cat-i">
-							<p>
-								<span>2.</span>
-								Додаткові питання щодо категорій С1,С (будова та терміни)
-							</p>
-						</div>
 					</div>
 				</div>
 
-				<div class="all-q-c">
-					<div class="que-i">
-						<p>
-							<span> 1. </span>
-							Додаткові питання щодо категорій С1,С (будова та терміни)Додаткові
-							питання щодо категорій С1,С (будова та терміни)Додаткові питання
-							щодо категорій С1,С (будова та терміни)Додаткові питання щодо
-							категорій С1,С (будова та терміни)
-						</p>
-						<div class="del-q-btn">
-							<i class="fa fa-trash"></i>
-						</div>
-					</div>
-					<div class="que-i">
-						<p>
-							<span> 1. </span>
-							Додаткові питання щодо категорій С1,С (будова та терміни)Додаткові
-							питання щодо категорій С1,С (будова та терміни)Додаткові питання
-							щодо категорій С1,С (будова та терміни)Додаткові питання щодо
-							категорій С1,С (будова та терміни)
-						</p>
-						<div class="del-q-btn">
-							<i class="fa fa-trash"></i>
-						</div>
-					</div>
-					<div class="que-i">
-						<p>
-							<span> 1. </span>
-							Додаткові питання щодо категорій С1,С (будова та терміни)Додаткові
-							питання щодо категорій С1,С (будова та терміни)Додаткові питання
-							щодо категорій С1,С (будова та терміни)Додаткові питання щодо
-							категорій С1,С (будова та терміни)
-						</p>
-						<div class="del-q-btn">
-							<i class="fa fa-trash"></i>
-						</div>
-					</div>
-					<div class="que-i">
-						<p>
-							<span> 1. </span>
-							Додаткові питання щодо категорій С1,С (будова та терміни)Додаткові
-							питання щодо категорій С1,С (будова та терміни)Додаткові питання
-							щодо категорій С1,С (будова та терміни)Додаткові питання щодо
-							категорій С1,С (будова та терміни)
-						</p>
-						<div class="del-q-btn">
-							<i class="fa fa-trash"></i>
-						</div>
-					</div>
-					<div class="que-i">
-						<p>
-							<span> 1. </span>
-							Додаткові питання щодо категорій С1,С (будова та терміни)Додаткові
-							питання щодо категорій С1,С (будова та терміни)Додаткові питання
-							щодо категорій С1,С (будова та терміни)Додаткові питання щодо
-							категорій С1,С (будова та терміни)
-						</p>
-						<div class="del-q-btn">
-							<i class="fa fa-trash"></i>
-						</div>
-					</div>
-					<div class="que-i">
-						<p>
-							<span> 1. </span>
-							Додаткові питання щодо категорій С1,С (будова та терміни)Додаткові
-							питання щодо категорій С1,С (будова та терміни)Додаткові питання
-							щодо категорій С1,С (будова та терміни)Додаткові питання щодо
-							категорій С1,С (будова та терміни)
-						</p>
-						<div class="del-q-btn">
-							<i class="fa fa-trash"></i>
-						</div>
-					</div>
-					<div class="que-i">
-						<p>
-							<span> 1. </span>
-							Додаткові питання щодо категорій С1,С (будова та терміни)Додаткові
-							питання щодо категорій С1,С (будова та терміни)Додаткові питання
-							щодо категорій С1,С (будова та терміни)Додаткові питання щодо
-							категорій С1,С (будова та терміни)
-						</p>
-						<div class="del-q-btn">
-							<i class="fa fa-trash"></i>
-						</div>
-					</div>
-					<div class="que-i">
-						<p>
-							<span> 1. </span>
-							Додаткові питання щодо категорій С1,С (будова та терміни)Додаткові
-							питання щодо категорій С1,С (будова та терміни)Додаткові питання
-							щодо категорій С1,С (будова та терміни)Додаткові питання щодо
-							категорій С1,С (будова та терміни)
-						</p>
-						<div class="del-q-btn">
-							<i class="fa fa-trash"></i>
-						</div>
-					</div>
-					<div class="que-i">
-						<p>
-							<span> 1. </span>
-							Додаткові питання щодо категорій С1,С (будова та терміни)Додаткові
-							питання щодо категорій С1,С (будова та терміни)Додаткові питання
-							щодо категорій С1,С (будова та терміни)Додаткові питання щодо
-							категорій С1,С (будова та терміни)
-						</p>
-						<div class="del-q-btn">
-							<i class="fa fa-trash"></i>
-						</div>
-					</div>
-					<div class="que-i">
-						<p>
-							<span> 1. </span>
-							Додаткові питання щодо категорій С1,С (будова та терміни)Додаткові
-							питання щодо категорій С1,С (будова та терміни)Додаткові питання
-							щодо категорій С1,С (будова та терміни)Додаткові питання щодо
-							категорій С1,С (будова та терміни)
-						</p>
-						<div class="del-q-btn">
-							<i class="fa fa-trash"></i>
-						</div>
-					</div>
-					<div class="que-i">
-						<p>
-							<span> 1. </span>
-							Додаткові питання щодо категорій С1,С (будова та терміни)Додаткові
-							питання щодо категорій С1,С (будова та терміни)Додаткові питання
-							щодо категорій С1,С (будова та терміни)Додаткові питання щодо
-							категорій С1,С (будова та терміни)
-						</p>
-						<div class="del-q-btn">
-							<i class="fa fa-trash"></i>
-						</div>
-					</div>
-					<div class="que-i">
-						<p>
-							<span> 1. </span>
-							Додаткові питання щодо категорій С1,С (будова та терміни)Додаткові
-							питання щодо категорій С1,С (будова та терміни)Додаткові питання
-							щодо категорій С1,С (будова та терміни)Додаткові питання щодо
-							категорій С1,С (будова та терміни)
-						</p>
-						<div class="del-q-btn">
-							<i class="fa fa-trash"></i>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="ch-c">
-				<div class="logout-c a-b-c">
-					<i class="fas fa-arrow-left"></i>
-				</div>
+				<div class="all-q-c"></div>
 			</div>
 
 			<div class="logout-c --back" id="btn-back">

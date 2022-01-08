@@ -258,6 +258,7 @@ label[for='select-img']:hover {
 
 .que-mod-c {
 	position: relative;
+	align-items: center;
 }
 
 .que-mod-t {
@@ -283,17 +284,19 @@ label[for='select-img']:hover {
 }
 
 .que-mod-sd {
-	width: 80%;
+	width: 90%;
 
 	display: flex;
 	align-items: center;
+	justify-content: center;
 }
 
-.que-mod-sd-i {
-	width: 90%;
+.que-mod-i-sd {
+	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
+	margin-top: 10px;
 }
 
 .que-mod-i-sd > p {
@@ -314,6 +317,10 @@ label[for='select-img']:hover {
 	cursor: pointer;
 
 	transition: all linear 0.4s;
+}
+
+.que-mod-i-sd {
+	width: 100%;
 }
 
 .que-mod-i-sd > p > span {
@@ -360,7 +367,7 @@ label[for='select-img']:hover {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 80%;
+	width: 90%;
 	margin-top: 30px;
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -539,6 +546,12 @@ label[for='select-img']:hover {
 	font-style: italic;
 }
 
+.cat-i > p {
+	width: 100%;
+	padding-left: 30px;
+	padding-right: 20px;
+}
+
 .all-q-c {
 	width: 100%;
 	height: 100%;
@@ -630,6 +643,30 @@ label[for='select-img']:hover {
 	display: flex;
 }
 
+.error-c {
+	display: none;
+}
+
+.error-c.active {
+	display: flex;
+}
+
 ::-webkit-scrollbar {
 	display: none;
+}
+
+.error-c {
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	font-size: 50px;
+	font-weight: 800;
+	color: var(--hover);
+	letter-spacing: 1px;
+}
+
+.error-c > i {
+	margin-bottom: 20px;
+	font-size: 120px;
+	color: var(--green);
 }

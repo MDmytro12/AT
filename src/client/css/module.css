@@ -6,10 +6,6 @@
 	left: 3%;
 }
 
-.logout-c.--back:hover > i {
-	transform: rotate(360deg);
-}
-
 /* Select rozdil */
 
 .choose-c {
