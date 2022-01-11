@@ -471,7 +471,7 @@ allBackBtns.forEach((btn) => {
 });
 
 btnLogout.addEventListener('click', () => {
-	ipcRenderer.send('app-logout');
+	ipcRenderer.send('app-exit');
 });
 
 btnBack.addEventListener('click', () => {
@@ -512,9 +512,13 @@ btnAddQuestionDb.addEventListener('click', () => {
 		let allAnswers = {};
 		let allImages = [];
 		let isImage = false;
+		let count = 1;
 
 		document.querySelectorAll('.que-as-i > input').forEach((a, index) => {
-			allAnswers[index + 1] = a.value;
+			if (a.value !== '') {
+				allAnswers[count] = a.value;
+				count++;
+			}
 		});
 
 		if (document.querySelector('.que-img-i')) {

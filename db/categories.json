@@ -1,0 +1,42 @@
+{"_id":{"$oid":"61d4b019ac3f880d1e8c7698"},"moduleNumber":1,"moduleName":"Загальні положення","current":true}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c7699"},"moduleNumber":2,"moduleName":"Обов'язки і права водіїв механічних транспортних засобів","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c769a"},"moduleNumber":3,"moduleName":"Рух транспортних засобів із спеціальними сигналами","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c769b"},"moduleNumber":4,"moduleName":"Обов'язки і права пішоходів","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c769c"},"moduleNumber":5,"moduleName":"Обов'язки і права пасажирів","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c769d"},"moduleNumber":6,"moduleName":"Вимоги до велосипедистів","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c769e"},"moduleNumber":7,"moduleName":"Вимоги до осіб, які керують гужовим транспортом і погоничів тварин","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c769f"},"moduleNumber":8,"moduleName":"Регулювання дорожнього руху","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76a0"},"moduleNumber":9,"moduleName":"Попереджувальні сигнали","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76a1"},"moduleNumber":10,"moduleName":"Початок руху та зміна його напрямку","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76a2"},"moduleNumber":11,"moduleName":"Розташування транспортних засобів на дорозі","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76a3"},"moduleNumber":12,"moduleName":"Швидкість руху","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76a4"},"moduleNumber":13,"moduleName":"Дистанція, інтервал, зустрічний роз'їзд","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76a5"},"moduleNumber":14,"moduleName":"Обгін","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76a6"},"moduleNumber":15,"moduleName":"Зупинка і стоянка","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76a7"},"moduleNumber":16,"moduleName":"Проїзд перехресть","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76a8"},"moduleNumber":17,"moduleName":"Переваги маршрутних транспортних засобів","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76a9"},"moduleNumber":18,"moduleName":"Проїзд пішохідних переходів і зупинок транспортних засобів","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76aa"},"moduleNumber":19,"moduleName":"Користування зовнішніми світловими приладами","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76ab"},"moduleNumber":20,"moduleName":"Рух через залізничні переїзди","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76ac"},"moduleNumber":21,"moduleName":"Перевезення пасажирів","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76ad"},"moduleNumber":22,"moduleName":"Перевезення вантажу","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76ae"},"moduleNumber":23,"moduleName":"Буксирування та експлуатація транспортних составів","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76af"},"moduleNumber":24,"moduleName":"Навчальна їзда","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76b0"},"moduleNumber":25,"moduleName":"Рух транспортних засобів у колонах","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76b1"},"moduleNumber":26,"moduleName":"Рух у житловій та пішохідній зоні","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76b2"},"moduleNumber":27,"moduleName":"Рух по автомагістралях і дорогах для автомобілів","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76b3"},"moduleNumber":28,"moduleName":"Рух по гірських дорогах і на крутих спусках","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76b4"},"moduleNumber":29,"moduleName":"Міжнародний рух","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76b5"},"moduleNumber":30,"moduleName":"Номерні, розпізнавальні знаки, написи і позначення","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76b6"},"moduleNumber":31,"moduleName":"Технічний стан транспортних засобів та їх обладнання","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76b7"},"moduleNumber":32,"moduleName":"Окремі питання організації дорожнього руху, що потребують узгодження","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76b8"},"moduleNumber":33,"moduleName":"Дорожні знаки","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76b9"},"moduleNumber":34,"moduleName":"Дорожня розмітка","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76ba"},"moduleNumber":35,"moduleName":"Основи безпечного водіння","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76bb"},"moduleNumber":36,"moduleName":"Основи права в області дорожнього руху","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76bc"},"moduleNumber":37,"moduleName":"Надання домедичної допомоги","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76bd"},"moduleNumber":38,"moduleName":"Етика водіння, культура та відпочинок водія","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76be"},"moduleNumber":39,"moduleName":"Європротокол","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76bf"},"moduleNumber":48,"moduleName":"Додаткові питання щодо категорій С1,С (загальні)","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76c0"},"moduleNumber":49,"moduleName":"Додаткові питання щодо категорій С1,С (будова та терміни)","current":false}
+{"_id":{"$oid":"61d4b019ac3f880d1e8c76c1"},"moduleNumber":50,"moduleName":"Додаткові питання щодо категорій С1,С (юридична відповідальність)","current":false}
